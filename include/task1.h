@@ -36,8 +36,8 @@ template<> void mergesort(char* a[6], int l, int r) {
 	char** tmp = new char* [r];
 	for (int i = 0; i < r; i++) {
 		tmp[i] = new char[r];
-		for(int j = 0; j < r; j++)
-			tmp[i][j]=(char)'/0';
+		for (int j = 0; j < r; j++)
+			tmp[i][j] = (char)'/0';
 	}
 	for (int step = 0; step < r - l + 1; step++)
 	{
@@ -49,12 +49,12 @@ template<> void mergesort(char* a[6], int l, int r) {
 		}
 		else
 		{
-			tmp[step]= a[j];
+			tmp[step] = a[j];
 			j++;
 		}
 	}
 	for (int step = 0; step < r - l + 1; step++)
-		a[l + step]= tmp[step];
+		a[l + step] = tmp[step];
 }
 template<class T> void msort(T* a, int r) {
 	mergesort(a, 0, r - 1);
