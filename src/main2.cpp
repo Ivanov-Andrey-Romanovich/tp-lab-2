@@ -1,7 +1,7 @@
 #include <iostream>
 #include "task2.h"
 
-int main() {
+int main1() {
 	const size_t n = 5;
 	//int* arr;
 	//arr = createArr<int, n>(gen);
