@@ -37,7 +37,7 @@ template<> void mergesort(char* a[6], int l, int r) {
 	for (int i = 0; i < r; i++) {
 		tmp[i] = new char[r];
 		for (int j = 0; j < r; j++)
-			tmp[i][j] = (char)'/0';
+			tmp[i][j] = '/0';
 	}
 	for (int step = 0; step < r - l + 1; step++)
 	{
