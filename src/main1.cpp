@@ -1,13 +1,23 @@
-#include <iostream>
 #include "task1.h"
+#include "time.h"
 
-int main2() {
-	const size_t n = 6;
-	int* val = new int[n] {5, 3, 2, 4, 1, 6};
-	//double val[n]{ 4.0, 3.0, 2.4, 2.5, 2.1, -1 };
-	//char* val[n]{ (char*)"ffff", (char*)"fff2", (char*)"f", (char*)"ff", (char*)"vvv", (char*)"fffrr" };
-	msort(val, n);
-	for (int i = 0; i < 6; i++)
-		std::cout << val[i] << " ";
+int main1() {
+	srand(time(NULL));
+	const int n = 7;
+	int mas[n];
+	for (int i = 0; i < n; i++)
+		mas[i] = rand() % 100 + 1;
+	for (int i = 0; i < n; i++)
+		cout << mas[i] << " ";
+	msort(mas, n);
+	cout << "\n";
+	for (int i = 0; i < n; i++)
+		cout << mas[i] << " ";
+	cout << "\n";
+	char* arr[n] = { (char*)"qwe", (char*)"qw", (char*)"q", (char*)"qwer", (char*)"qwere", (char*)"qwerewq", (char*)"qwerew" };
+	msort(arr, n);
+	for (int i = 0; i < n; i++)
+		cout << arr[i] << " ";
+	cout << "\n";
 	return 0;
 }

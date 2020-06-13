@@ -1,64 +1,40 @@
 #pragma once
-#pragma warning(disable : 4996)
-#include <cstring>
-template<class T> void mergesort(T* a, int l, int r) {
-	if (l == r) return;
-	int mid = (l + r) / 2;
-	mergesort(a, l, mid);
-	mergesort(a, mid + 1, r);
-	int i = l;
-	int j = mid + 1;
-	T* tmp = new T[r];
-	for (int step = 0; step < r - l + 1; step++)
-	{
-		if ((j > r) || ((i <= mid) && (a[i] < a[j])))
-		{
-			tmp[step] = a[i];
-			i++;
-		}
-		else
-		{
-			tmp[step] = a[j];
-			j++;
-		}
-	}
-	for (int step = 0; step < r - l + 1; step++)
-		a[l + step] = tmp[step];
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+template <typename T>
+bool compare(T a, T b) {
+	return a < b;
 }
 
-template<> void mergesort(char* a[6], int l, int r) {
-	if (l == r) return;
-	int mid = (l + r) / 2;
-	mergesort(a, l, mid);
-	mergesort(a, mid + 1, r);
-	int i = l;
-	int j = mid + 1;
-	char** tmp = new char* [r];
-	for (int i = 0; i < r; i++) {
-		tmp[i] = new char[r];
-		for (int j = 0; j < r; j++)
-			tmp[i][j] = '/0';
-	}
-	for (int step = 0; step < r - l + 1; step++)
-	{
-		if ((j > r) || ((i <= mid) && (strlen(a[i]) < strlen(a[j]))))
-		{
+bool compare(char* a, char* b) {
+	return strlen(a) < strlen(b);
+}
 
-			tmp[step] = a[i];
-			i++;
+template <typename T>
+void msort(T* array, int size) {
+	if (size == 1) {
+		return;
+	}
+	int mid = size / 2;
+	msort(array, mid);
+	msort((array + mid), size - mid);
+	int l = 0;
+	int r = mid;
+	T* tarr = new T[size];
+	for (int step = 0; step < size; step++) {
+		if ((r >= size) || ((l < mid) && (compare(array[l], array[r])))) {
+			tarr[step] = array[l];
+			l++;
 		}
-		else
-		{
-			tmp[step] = a[j];
-			j++;
+		else {
+			tarr[step] = array[r];
+			r++;
 		}
 	}
-	for (int step = 0; step < r - l + 1; step++)
-		a[l + step] = tmp[step];
-}
-template<class T> void msort(T* a, int r) {
-	mergesort(a, 0, r - 1);
-}
-template<> void msort(char* a[6], int r) {
-	mergesort(a, 0, r - 1);
+	for (int step = 0; step < size; step++) {
+		array[step] = tarr[step];
+	}
+	delete[] tarr;
 }
