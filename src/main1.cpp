@@ -1,7 +1,7 @@
 #include "task1.h"
 #include "time.h"
 
-int main1() {
+int main() {
 	srand(time(NULL));
 	const int n = 7;
 	int mas[n];

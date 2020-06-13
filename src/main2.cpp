@@ -7,7 +7,7 @@ T gen(){
 	return c++;
 }
 
-int mai1n()
+int main()
 {
 	int* mas = createArr<int, 10>(gen);
 	for (int i = 0; i < 10; i++)
